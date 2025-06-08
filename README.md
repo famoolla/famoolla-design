@@ -10,6 +10,8 @@
 * Storybook - https://storybook.js.org/
 * Figma
 * Figma Sync Plugin - https://mui.com/material-ui/design-resources/material-ui-sync/
+* Github Actions
+* Vittest
 
 ## Design tokens (example: https://mui.com/material-ui/customization/palette/)
 * Colour tokens
@@ -17,7 +19,14 @@
 * Spacing
 * Responsive Breakpoints
 
+## Testing components expectations
+* Functioning components
+* Accessibility
+* Broswer compatibility - already tested by MUI?
+
 ## Components
 * Button
 * ...
+
+
 
