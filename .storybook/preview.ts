@@ -31,8 +31,8 @@ const preview: Preview = {
   decorators: [
     withThemeFromJSXProvider({
       themes: {
-        light: theme,
-        dark: theme,
+        light: theme.colorSchemes.light,
+        dark: theme.colorSchemes.dark,
       },
       defaultTheme: 'light',
       Provider: ThemeProvider,

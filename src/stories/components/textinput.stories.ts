@@ -1,13 +1,13 @@
 import React from 'react';
 import type { StoryObj, Meta } from '@storybook/react';
 import TextInput  from './textinput.component';
-// import { withFormik } from 'storybook-formik';
+import { withFormik } from 'storybook-formik';
 
 // Establish meta data for the component
 const meta = {
     title: 'Components/TextField',
     component: TextInput,
-    // decorators: [withFormik],
+    decorators: [withFormik],
     args: {
         onClick: () => {
             alert('clicked');
