@@ -10,7 +10,8 @@ import '@fontsource/material-icons';
 
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import theme from '../src/themes/theme'; // Import your custom theme configs
+import lighttheme from '../src/themes/lighttheme';
+import darktheme from '../src/themes/darktheme';
 
 const preview: Preview = {
   parameters: {
@@ -31,8 +32,8 @@ const preview: Preview = {
   decorators: [
     withThemeFromJSXProvider({
       themes: {
-        light: theme.colorSchemes.light,
-        dark: theme.colorSchemes.dark,
+        light: lighttheme,
+        dark: darktheme,
       },
       defaultTheme: 'light',
       Provider: ThemeProvider,
