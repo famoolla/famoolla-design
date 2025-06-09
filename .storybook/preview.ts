@@ -1,5 +1,17 @@
 import type { Preview } from '@storybook/react-vite'
 
+// Embed UI fonts
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import '@fontsource/material-icons';
+
+
+import { withThemeFromJSXProvider } from '@storybook/addon-themes';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from '../src/themes/theme'; // Import your custom theme configs
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -16,6 +28,17 @@ const preview: Preview = {
       test: 'todo'
     }
   },
+  decorators: [
+    withThemeFromJSXProvider({
+      themes: {
+        light: theme,
+        dark: theme,
+      },
+      defaultTheme: 'light',
+      Provider: ThemeProvider,
+      GlobalStyles: CssBaseline,
+    }),
+  ]
 };
 
 export default preview;

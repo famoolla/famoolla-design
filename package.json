@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "hello": "echo hello",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -12,6 +13,10 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@emotion/styled": "^11.14.0",
+    "@fontsource/material-icons": "^5.2.5",
+    "@fontsource/roboto": "^5.2.6",
+    "@mui/material": "^7.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
@@ -21,6 +26,7 @@
     "@storybook/addon-a11y": "^9.0.6",
     "@storybook/addon-docs": "^9.0.6",
     "@storybook/addon-onboarding": "^9.0.6",
+    "@storybook/addon-themes": "^9.0.6",
     "@storybook/addon-vitest": "^9.0.6",
     "@storybook/react-vite": "^9.0.6",
     "@types/react": "^19.1.2",

@@ -1,33 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import theme from './themes/theme';
+
+const themeuse = createTheme(theme)
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <ThemeProvider theme={themeuse}>
+      <div className="container">
+        <div className="card">
+          <h2 className="h2">Example of MUI Design Tokens</h2>
+          <div className="flex">
+            <div className="token">
+              <h3 className="h3">spacing</h3>
+              <div className="grid">
+                <div className="cell" style={{ padding: themeuse.spacing(1) }}>
+                  spacing(1)
+                </div>
+                <div className="cell" style={{ padding: themeuse.spacing(2) }}>
+                  spacing(2)
+                </div>
+                <div className="cell" style={{ padding: themeuse.spacing(3) }}>
+                  spacing(3)
+                </div>
+              </div>
+            </div>
+            <div className="token">
+              <h3 className="h3">palette</h3>
+              <div className="grid">
+                <div className="cell" style={{ backgroundColor: themeuse.palette.primary.main }}>
+                  primary.main
+                </div>
+                <div className="cell" style={{ backgroundColor: themeuse.palette.primary.light }}>
+                  primary.light
+                </div>
+                <div className="cell" style={{ backgroundColor: themeuse.palette.primary.dark }}>
+                  primary.dark
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </ThemeProvider>
     </>
   )
 }
