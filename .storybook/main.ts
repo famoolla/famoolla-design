@@ -11,11 +11,13 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
     "@storybook/addon-vitest",
-    "@storybook/addon-themes"
+    "@storybook/addon-themes",
+    "@vueless/storybook-dark-mode",
   ],
   "framework": {
     "name": "@storybook/react-vite",
     "options": {}
   },
+  staticDirs: ['../public'],
 };
 export default config;

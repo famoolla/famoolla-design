@@ -2,7 +2,7 @@ import {MYTextField} from "../../components/forms/textfield";
 import {useFormik} from "formik";
 import {MYButton} from "../../components/forms/button";
 import * as Yup from "yup";
-import {Box} from "@mui/material";
+// import {Box} from "@mui/material";
 
 export default function TextInput({onClick, fullWidth, color, label, variant, size, ariaLabel}) {
 
@@ -20,7 +20,7 @@ export default function TextInput({onClick, fullWidth, color, label, variant, si
     });
     return (
         <form onSubmit={formik.handleSubmit}>
-        <Box sx={{ bgcolor: `primary.main`, width: 40, height: 20 }} />
+        {/* <Box sx={{ bgcolor: `primary.main`, width: 40, height: 20 }} /> */}
         {/* https://mui.com/material-ui/customization/palette/ */}
         <MYTextField 
         name="username" 
