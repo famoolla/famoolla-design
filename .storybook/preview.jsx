@@ -7,9 +7,9 @@ import '@fontsource/material-icons';
 
 
 // Themes
-import { useDarkMode } from '@vueless/storybook-dark-mode';
-import {DocsContainer as BaseDocsContainer} from '@storybook/addon-docs/blocks';
-import { DARK_MODE_EVENT_NAME } from '@vueless/storybook-dark-mode';
+// import { useDarkMode } from '@vueless/storybook-dark-mode';
+// import {DocsContainer as BaseDocsContainer} from '@storybook/addon-docs/blocks';
+// import { DARK_MODE_EVENT_NAME } from '@vueless/storybook-dark-mode';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import lighttheme from '../src/themes/lighttheme';
@@ -47,9 +47,9 @@ const preview = {
       },
     },
 
-    docs: {
-      theme: selectedTheme === 'dark' ? themes.dark : themes.light,
-    },
+    // docs: {
+    //   theme: selectedTheme === 'dark' ? themes.dark : themes.light,
+    // },
     backgrounds: {disable: true},
     // docs: {
     //   container: ({ children }) => {
