@@ -7,7 +7,7 @@ import { useTheme } from '@mui/material/styles';
 const ColourRow = ({ colourArray }) => {   
     
     return (
-        <Stack direction="row" spacing={6}>
+        <Stack direction="row" spacing={1}>
                 {colourArray.map((colour, index) => (
                     <ColourBox key={index} colour={colour} />
                 ))}
@@ -35,19 +35,12 @@ const ColourBox = ({ colour }) => {
 
     // Get the palette from the split array by referencing the theme object
     const palette = theme.palette[colourArray[0]][colourArray[1]];
+    
     // console.log(palette);
     
     return (
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={1}>
             <Box sx={{ bgcolor: colour, width: 50, height: 50, borderRadius: '5px' }} />
-            {/* <Box
-                sx={{
-                    bgcolor: colour,
-                    width: 50,
-                    height: 50,
-                    borderRadius: '5px',
-                }}
-            /> */}
             <Stack direction="column" spacing={0}>
                 <Typography variant="body2">{colour}</Typography>
                 <Typography variant="body2">{palette}</Typography>
