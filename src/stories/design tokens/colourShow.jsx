@@ -67,6 +67,7 @@ const ColourBox = ({ colour }) => {
     
     return (
         <Stack direction="row" spacing={2}>
+            
             <Box sx={{ bgcolor: colour, width: 50, height: 50, borderRadius: '5px' }} />
             {/* <Box
                 sx={{
@@ -77,8 +78,10 @@ const ColourBox = ({ colour }) => {
                 }}
             /> */}
             <Stack direction="column" spacing={0}>
+            <Box sx={{  width: 150 }}>
                 <Typography variant="body2">{colour}</Typography>
                 <Typography variant="body2">{palette}</Typography>
+            </Box>
             </Stack>
            </Stack>
     );

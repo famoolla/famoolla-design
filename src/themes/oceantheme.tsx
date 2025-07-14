@@ -24,15 +24,15 @@ const oceanTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#0369a1',
-      light: '#0ea5e9',
+      main: '#0369A1',
+      light: '#0EA5E9',
       dark: '#075985',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#06b6d4',
-      light: '#0891b2',
-      dark: '#0e7490',
+      main: '#06B6D4',
+      light: '#0891B2',
+      dark: '#0E7490',
       contrastText: '#ffffff',
     },
     background: {
@@ -53,26 +53,26 @@ const oceanTheme = createTheme({
     divider: 'rgba(14, 165, 233, 0.1)',
     success: {
       main: '#059669',
-      light: '#10b981',
+      light: '#10B981',
       dark: '#047857',
       contrastText: '#ffffff',
     },
     warning: {
-      main: '#f59e0b',
-      light: '#fbbf24',
-      dark: '#d97706',
+      main: '#F59E0B',
+      light: '#FBBF24',
+      dark: '#D97706',
       contrastText: '#ffffff',
     },
     error: {
-      main: '#dc2626',
-      light: '#ef4444',
-      dark: '#b91c1c',
+      main: '#DC2626',
+      light: '#EF4444',
+      dark: '#B91C1C',
       contrastText: '#ffffff',
     },
     info: {
-      main: '#3b82f6',
-      light: '#60a5fa',
-      dark: '#2563eb',
+      main: '#3B82F6',
+      light: '#60A5FA',
+      dark: '#2563EB',
       contrastText: '#ffffff',
     },
     // Custom colors from the Ocean theme
