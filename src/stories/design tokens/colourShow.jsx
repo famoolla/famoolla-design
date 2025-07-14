@@ -1,13 +1,40 @@
+
 import React from 'react';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
+import oceanTheme from '../../themes/oceantheme';
+import darktheme from '../../themes/darktheme';
 
-const ColourRow = ({ colourArray }) => {   
+
+function getThemeFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const globals = urlParams.get('globals');
+  
+    if (globals) {
+      const match = globals.match(/theme:(\w+)/);
+      if (match && match[1]) {
+        return match[1];
+      }
+    }
+    return null;
+  }
+
+
+const ColourShow = ({ colourArray }) => {  
+    
+    // Get the theme from storybook global context
+    const selectedTheme = getThemeFromUrl();
+
+    
     
     return (
-        <Stack direction="row" spacing={1}>
+        <ThemeProvider theme={selectedTheme === 'dark' ? darktheme : oceanTheme}>
+        <CssBaseline />
+        <Stack direction="row" spacing={6}>
                 {colourArray.map((colour, index) => (
                     <ColourBox key={index} colour={colour} />
                 ))}
@@ -22,6 +49,7 @@ const ColourRow = ({ colourArray }) => {
                     colour="primary.dark" 
                 /> */}
         </Stack>
+        </ThemeProvider>
     );
 };
 
@@ -35,33 +63,28 @@ const ColourBox = ({ colour }) => {
 
     // Get the palette from the split array by referencing the theme object
     const palette = theme.palette[colourArray[0]][colourArray[1]];
-    
     // console.log(palette);
     
     return (
-        <Stack direction="row" spacing={1}>
+        <Stack direction="row" spacing={2}>
+            
             <Box sx={{ bgcolor: colour, width: 50, height: 50, borderRadius: '5px' }} />
+            {/* <Box
+                sx={{
+                    bgcolor: colour,
+                    width: 50,
+                    height: 50,
+                    borderRadius: '5px',
+                }}
+            /> */}
             <Stack direction="column" spacing={0}>
+            <Box sx={{  width: 150 }}>
                 <Typography variant="body2">{colour}</Typography>
                 <Typography variant="body2">{palette}</Typography>
+            </Box>
             </Stack>
            </Stack>
     );
 };
 
-export default {
-    title: 'Design Tokens/Colour',
-    component: ColourRow,
-    parameters:{
-        layout: 'centered',
-    },
-
-    // !dev removes the story from showing in the Storybook UI
-    tags: ['!dev'],
-    args:{},
-
-};
-
-export const Default = {
-    args:{},
-};
+export default ColourShow;

@@ -7,25 +7,26 @@ import '@fontsource/material-icons';
 
 
 // Themes
-import { useDarkMode } from '@vueless/storybook-dark-mode';
-import {DocsContainer as BaseDocsContainer} from '@storybook/addon-docs/blocks';
-import { DARK_MODE_EVENT_NAME } from '@vueless/storybook-dark-mode';
+// import { useDarkMode } from '@vueless/storybook-dark-mode';
+import {DocsContainer} from '@storybook/addon-docs/blocks';
+// import { DARK_MODE_EVENT_NAME } from '@vueless/storybook-dark-mode';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import lighttheme from '../src/themes/lighttheme';
 import darktheme from '../src/themes/darktheme';
 import oceanTheme from '../src/themes/oceantheme';
 import { addons} from 'storybook/internal/preview-api';
 import { useEffect, useState } from 'react';
 import './preview.css';
-import { themes } from 'storybook/theming';
+import { themes,create } from 'storybook/theming';
+import { useGlobals } from 'storybook/manager-api';
+// import { create } from '@storybook/theming';
+
 
 const channel = addons.getChannel();
 
 
-function getThemeFromUrl() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const globals = urlParams.get('globals');
+function getThemeFromUrl(globals) {
 
   if (globals) {
     const match = globals.match(/theme:(\w+)/);
@@ -36,7 +37,52 @@ function getThemeFromUrl() {
   return null;
 }
 
-const selectedTheme = getThemeFromUrl();
+
+
+// Create custom Storybook themes that match MUI
+const createStorybookTheme = (mode) => {
+  const muiTheme = createTheme({ palette: { mode } });
+  
+  return create({
+    base: mode,
+    brandTitle: 'Famoolla Design System',
+    
+    colorPrimary: muiTheme.palette.primary.main,
+    colorSecondary: muiTheme.palette.secondary.main,
+    
+    // UI
+    appBg: muiTheme.palette.background.default,
+    appContentBg: muiTheme.palette.background.paper,
+    appBorderColor: muiTheme.palette.divider,
+    appBorderRadius: muiTheme.shape.borderRadius,
+    
+    // Typography
+    fontBase: muiTheme.typography.fontFamily,
+    fontCode: 'monospace',
+    
+    // Text colors
+    textColor: muiTheme.palette.text.primary,
+    textInverseColor: muiTheme.palette.text.secondary,
+    
+    // Toolbar
+    barTextColor: muiTheme.palette.text.secondary,
+    barSelectedColor: muiTheme.palette.primary.main,
+    barBg: muiTheme.palette.background.paper,
+    
+    // Form colors
+    inputBg: muiTheme.palette.background.paper,
+    inputBorder: muiTheme.palette.divider,
+    inputTextColor: muiTheme.palette.text.primary,
+    inputBorderRadius: muiTheme.shape.borderRadius,
+  });
+};
+
+const lightMuiTheme = createTheme({ palette: { mode: 'light' } });
+const darkMuiTheme = createTheme({ palette: { mode: 'dark' } });
+
+// const selectedTheme = getThemeFromUrl();
+
+// console.log("Selected Theme: ", selectedTheme);
 
 const preview = {
   parameters: {
@@ -48,8 +94,37 @@ const preview = {
     },
 
     docs: {
-      theme: selectedTheme === 'dark' ? themes.dark : themes.light,
+    container: ({ children, context }) => {
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const globalsUrl = urlParams.get('globals');
+      const urlTheme = getThemeFromUrl(globalsUrl);
+
+      // console.log("Url Theme: ", urlTheme);
+
+      // const [globals] = useGlobals();
+
+      const theme = context?.globals;
+      // console.log("Docs Theme: ", context);
+      // const muiTheme = urlTheme === 'dark' ? darktheme : oceanTheme;
+      const docsTheme = urlTheme === 'dark' ? themes.dark : themes.light;
+
+      const storybookTheme = createStorybookTheme(urlTheme);
+
+      // addons.setConfig({
+      // theme: docsTheme,
+      // });
+      
+      return (
+        <DocsContainer context={context} theme={storybookTheme}>
+          <ThemeProvider theme={urlTheme === 'dark' ? darktheme : oceanTheme}>
+         <CssBaseline />
+          {children}
+          </ThemeProvider>
+        </DocsContainer>
+      );
     },
+  },
     backgrounds: {disable: true},
     // docs: {
     //   container: ({ children }) => {
@@ -85,6 +160,9 @@ const preview = {
       // },
 
 
+    theme:{
+
+    },
     options: {
       storySort: {
         order: ['Design Tokens', 'Forms'],
