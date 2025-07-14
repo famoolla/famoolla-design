@@ -39,46 +39,46 @@ function getThemeFromUrl(globals) {
 
 
 
-// Create custom Storybook themes that match MUI
-const createStorybookTheme = (mode) => {
-  const muiTheme = createTheme({ palette: { mode } });
+// // Create custom Storybook themes that match MUI
+// const createStorybookTheme = (mode) => {
+//   const muiTheme = createTheme({ palette: { mode } });
   
-  return create({
-    base: mode,
-    brandTitle: 'Famoolla Design System',
+//   return create({
+//     base: mode,
+//     brandTitle: 'Famoolla Design System',
     
-    colorPrimary: muiTheme.palette.primary.main,
-    colorSecondary: muiTheme.palette.secondary.main,
+//     colorPrimary: muiTheme.palette.primary.main,
+//     colorSecondary: muiTheme.palette.secondary.main,
     
-    // UI
-    appBg: muiTheme.palette.background.default,
-    appContentBg: muiTheme.palette.background.paper,
-    appBorderColor: muiTheme.palette.divider,
-    appBorderRadius: muiTheme.shape.borderRadius,
+//     // UI
+//     appBg: muiTheme.palette.background.default,
+//     appContentBg: muiTheme.palette.background.paper,
+//     appBorderColor: muiTheme.palette.divider,
+//     appBorderRadius: muiTheme.shape.borderRadius,
     
-    // Typography
-    fontBase: muiTheme.typography.fontFamily,
-    fontCode: 'monospace',
+//     // Typography
+//     fontBase: muiTheme.typography.fontFamily,
+//     fontCode: 'monospace',
     
-    // Text colors
-    textColor: muiTheme.palette.text.primary,
-    textInverseColor: muiTheme.palette.text.secondary,
+//     // Text colors
+//     textColor: muiTheme.palette.text.primary,
+//     textInverseColor: muiTheme.palette.text.secondary,
     
-    // Toolbar
-    barTextColor: muiTheme.palette.text.secondary,
-    barSelectedColor: muiTheme.palette.primary.main,
-    barBg: muiTheme.palette.background.paper,
+//     // Toolbar
+//     barTextColor: muiTheme.palette.text.secondary,
+//     barSelectedColor: muiTheme.palette.primary.main,
+//     barBg: muiTheme.palette.background.paper,
     
-    // Form colors
-    inputBg: muiTheme.palette.background.paper,
-    inputBorder: muiTheme.palette.divider,
-    inputTextColor: muiTheme.palette.text.primary,
-    inputBorderRadius: muiTheme.shape.borderRadius,
-  });
-};
+//     // Form colors
+//     inputBg: muiTheme.palette.background.paper,
+//     inputBorder: muiTheme.palette.divider,
+//     inputTextColor: muiTheme.palette.text.primary,
+//     inputBorderRadius: muiTheme.shape.borderRadius,
+//   });
+// };
 
-const lightMuiTheme = createTheme({ palette: { mode: 'light' } });
-const darkMuiTheme = createTheme({ palette: { mode: 'dark' } });
+// const lightMuiTheme = createTheme({ palette: { mode: 'light' } });
+// const darkMuiTheme = createTheme({ palette: { mode: 'dark' } });
 
 // const selectedTheme = getThemeFromUrl();
 
@@ -104,19 +104,19 @@ const preview = {
 
       // const [globals] = useGlobals();
 
-      const theme = context?.globals;
+      // const theme = context?.globals;
       // console.log("Docs Theme: ", context);
       // const muiTheme = urlTheme === 'dark' ? darktheme : oceanTheme;
       const docsTheme = urlTheme === 'dark' ? themes.dark : themes.light;
 
-      const storybookTheme = createStorybookTheme(urlTheme);
+      // const storybookTheme = createStorybookTheme(urlTheme);
 
       // addons.setConfig({
       // theme: docsTheme,
       // });
       
       return (
-        <DocsContainer context={context} theme={storybookTheme}>
+        <DocsContainer context={context} theme={docsTheme}>
           <ThemeProvider theme={urlTheme === 'dark' ? darktheme : oceanTheme}>
          <CssBaseline />
           {children}

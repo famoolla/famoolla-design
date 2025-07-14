@@ -78,16 +78,12 @@ const oceanTheme = createTheme({
     // Custom colors from the Ocean theme
   },
   typography: {
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    fontFamily: "Inter, sans-serif",
     h1: {
       fontSize: '3rem',
       fontWeight: 700,
       lineHeight: 1.2,
-      letterSpacing: '-0.02em',
-      background: 'linear-gradient(135deg, #0369a1 0%, #075985 100%)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text',
+      color: '#1e293b',
     },
     h2: {
       fontSize: '1.4rem',
