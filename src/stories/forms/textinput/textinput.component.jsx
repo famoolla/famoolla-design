@@ -1,6 +1,6 @@
-import {MYTextField} from "../../components/forms/textfield";
+import {MYTextField} from "../../../components/forms/textfield";
 import {useFormik} from "formik";
-import {MYButton} from "../../components/forms/button";
+import {MYButton} from "../../../components/forms/button";
 import * as Yup from "yup";
 // import {Box} from "@mui/material";
 
